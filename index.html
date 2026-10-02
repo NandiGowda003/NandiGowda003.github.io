@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfolio of Nandeesha C G, Data Engineer and Analyst."
+    />
+    <title>Nandeesha C G — Data Engineer & Analyst</title>
+    <style>
+      :root {
+        --ink: #17151f;
+        --muted: #635f6f;
+        --paper: #f8f6f1;
+        --card: #ffffff;
+        --line: #e6e1d8;
+        --purple: #6a48d7;
+        --orange: #f58c4d;
+        --green: #75bd8d;
+        --shadow: 0 20px 50px rgba(31, 24, 42, 0.08);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.55;
+      }
+      a { color: inherit; text-decoration: none; }
+      a:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }
+      .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 82px;
+        gap: 24px;
+      }
+      .brand { font-weight: 800; letter-spacing: -0.055em; font-size: 1.35rem; }
+      .brand span { color: var(--purple); }
+      .nav-links { display: flex; gap: 24px; color: var(--muted); font-size: 0.95rem; }
+      .nav-links a:hover { color: var(--purple); }
+
+      .hero {
+        min-height: 580px;
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1.18fr 0.82fr;
+        gap: 64px;
+        padding: 58px 0 84px;
+      }
+      .eyebrow, .section-label {
+        margin: 0 0 20px;
+        color: var(--purple);
+        text-transform: uppercase;
+        letter-spacing: 0.13em;
+        font-weight: 800;
+        font-size: 0.75rem;
+      }
+      h1, h2, h3, p { margin-top: 0; }
+      h1 {
+        max-width: 720px;
+        margin-bottom: 22px;
+        font-size: clamp(3.2rem, 8vw, 6.5rem);
+        letter-spacing: -0.075em;
+        line-height: 0.93;
+      }
+      .hero-copy {
+        max-width: 570px;
+        margin-bottom: 34px;
+        color: var(--muted);
+        font-size: 1.15rem;
+      }
+      .actions { display: flex; flex-wrap: wrap; gap: 14px; }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        border-radius: 99px;
+        padding: 0 21px;
+        background: var(--ink);
+        color: white;
+        font-weight: 700;
+        transition: transform 180ms ease, background 180ms ease;
+      }
+      .button:hover { transform: translateY(-3px); background: var(--purple); }
+      .button.secondary { border: 1px solid var(--line); background: transparent; color: var(--ink); }
+      .button.secondary:hover { border-color: var(--purple); color: var(--purple); background: transparent; }
+
+      .portrait {
+        position: relative;
+        height: min(430px, 72vw);
+        min-height: 350px;
+        overflow: hidden;
+        border-radius: 28px;
+        background: #e1d8ff;
+        box-shadow: var(--shadow);
+      }
+      .portrait::before {
+        position: absolute;
+        content: "";
+        width: 68%;
+        aspect-ratio: 1;
+        top: 12%;
+        right: 13%;
+        border-radius: 48% 52% 45% 55%;
+        background: var(--orange);
+        transform: rotate(-14deg);
+      }
+      .portrait::after {
+        position: absolute;
+        content: "N";
+        display: grid;
+        place-items: center;
+        inset: auto 17% 10% auto;
+        width: 42%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: var(--ink);
+        color: white;
+        font-size: clamp(6rem, 15vw, 10rem);
+        font-family: Georgia, serif;
+        font-weight: 400;
+      }
+      .portrait-tag {
+        position: absolute;
+        z-index: 1;
+        bottom: 24px;
+        left: 24px;
+        margin: 0;
+        max-width: 160px;
+        color: var(--ink);
+        font-weight: 800;
+        font-size: 0.9rem;
+      }
+
+      section { padding: 96px 0; }
+      .about { background: var(--ink); color: white; }
+      .about-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 68px; }
+      .about .section-label { color: #b9a8ff; }
+      h2 { margin-bottom: 24px; font-size: clamp(2.3rem, 5vw, 4.2rem); letter-spacing: -0.065em; line-height: 0.98; }
+      .about-copy { max-width: 680px; color: #d6d2df; font-size: 1.18rem; }
+      .facts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+      .fact { border: 1px solid #514c5d; border-radius: 999px; padding: 8px 13px; color: #ece9f0; font-size: 0.9rem; }
+
+      .projects-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 34px; }
+      .projects-head h2 { margin: 0; }
+      .small-link { color: var(--purple); font-weight: 800; white-space: nowrap; }
+      .small-link:hover { text-decoration: underline; }
+      .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+      .project {
+        display: flex;
+        min-height: 354px;
+        flex-direction: column;
+        justify-content: end;
+        overflow: hidden;
+        position: relative;
+        border-radius: 22px;
+        padding: 26px;
+        background: var(--card);
+        box-shadow: 0 1px 0 var(--line);
+        transition: transform 180ms ease, box-shadow 180ms ease;
+      }
+      .project:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+      .project::before {
+        content: "";
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        top: 32px;
+        right: 20px;
+        border-radius: 30px;
+        background: var(--purple);
+        transform: rotate(18deg);
+      }
+      .project:nth-child(2)::before { border-radius: 50%; background: var(--green); transform: none; }
+      .project:nth-child(3)::before { height: 150px; background: var(--orange); transform: rotate(-22deg); }
+      .project > * { position: relative; z-index: 1; }
+      .project-type { margin-bottom: 9px; color: var(--muted); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+      h3 { margin-bottom: 6px; font-size: 1.5rem; letter-spacing: -0.04em; }
+      .project p:last-child { margin: 0; color: var(--muted); }
+
+      .experience { background: #f0edff; }
+      .experience-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 68px; }
+      .roles { border-top: 1px solid #cfc8e8; }
+      .role { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 24px; padding: 23px 0; border-bottom: 1px solid #cfc8e8; }
+      .role p { margin: 0; color: var(--muted); }
+      .role h3 { margin: 0 0 4px; }
+
+      .contact { padding-bottom: 110px; }
+      .contact-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+        padding: clamp(32px, 7vw, 74px);
+        border-radius: 28px;
+        background: #e5f4e9;
+      }
+      .contact-card h2 { max-width: 640px; margin-bottom: 0; }
+      footer { padding: 0 0 34px; color: var(--muted); font-size: 0.88rem; }
+      .footer-row { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); padding-top: 24px; }
+      .socials { display: flex; gap: 18px; }
+      .socials a:hover { color: var(--purple); }
+
+      @media (max-width: 800px) {
+        .nav { min-height: 70px; }
+        .nav-links { display: none; }
+        .hero, .about-grid, .experience-grid { grid-template-columns: 1fr; gap: 40px; }
+        .hero { padding: 46px 0 64px; }
+        .portrait { height: 350px; }
+        section { padding: 70px 0; }
+        .project-grid { grid-template-columns: 1fr; }
+        .project { min-height: 290px; }
+        .role { grid-template-columns: 1fr; gap: 7px; }
+        .contact-card, .footer-row { align-items: flex-start; flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="wrap">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="#top">nandeesha<span>.</span></a>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#work">Work</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero wrap" aria-labelledby="intro-title">
+        <div>
+          <p class="eyebrow">Data Engineer & Analyst · Karnataka, India</p>
+          <h1 id="intro-title">Turning data into trusted decisions.</h1>
+          <p class="hero-copy">Hi, I’m Nandeesha C G. I build scalable Azure data pipelines, lakehouse platforms, and analytics solutions that make data useful for people and businesses.</p>
+          <div class="actions">
+            <a class="button" href="#work">Explore my work ↓</a>
+            <a class="button secondary" href="mailto:nandigowda.96@gmail.com">Let’s talk ↗</a>
+          </div>
+        </div>
+        <div class="portrait" aria-label="Decorative monogram for Nandeesha C G">
+          <p class="portrait-tag">Data → Engineering → Analytics</p>
+        </div>
+      </section>
+
+      <section class="about" id="about" aria-labelledby="about-title">
+        <div class="wrap about-grid">
+          <p class="section-label">A little about me</p>
+          <div>
+            <h2 id="about-title">I build modern data platforms from source to insight.</h2>
+            <p class="about-copy">I’m a Data Engineer with 5+ years of freelance and project-based experience. My work covers the full data lifecycle: ingestion, transformation, orchestration, data quality, modeling, and analytics. I focus on Azure-native solutions that are scalable, reliable, and ready for business use.</p>
+            <div class="facts" aria-label="Skills and interests">
+              <span class="fact">Azure Data Factory</span>
+              <span class="fact">Azure Databricks</span>
+              <span class="fact">PySpark & SQL</span>
+              <span class="fact">Power BI</span>
+              <span class="fact">Data Lakehouse</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap" id="work" aria-labelledby="work-title">
+        <div class="projects-head">
+          <div>
+            <p class="section-label">Selected projects</p>
+            <h2 id="work-title">Data platforms built for scale.</h2>
+          </div>
+          <a class="small-link" href="https://github.com/NandiGowda003" target="_blank" rel="noreferrer">View GitHub ↗</a>
+        </div>
+        <div class="project-grid">
+          <a class="project" href="https://github.com/NandiGowda003/AdventureWorks2025-Azure-Databricks-DataEngineering" target="_blank" rel="noreferrer" aria-label="Open AdventureWorks Azure Data Engineering Platform repository on GitHub">
+            <p class="project-type">Azure · Databricks · Power BI</p>
+            <h3>AzureFlow: AdventureWorks</h3>
+            <p>A full Azure data journey—from raw ingestion to trusted dashboards—built on a Bronze → Silver → Gold architecture. ↗</p>
+          </a>
+          <a class="project" href="https://github.com/NandiGowda003/NYC_Yellow_Taxi_Azure_DataBricks_DataEngineering" target="_blank" rel="noreferrer" aria-label="Open NYC Yellow Taxi Azure Data Engineering Platform repository on GitHub">
+            <p class="project-type">PySpark · ADF · REST APIs</p>
+            <h3>TaxiPulse: NYC Data Platform</h3>
+            <p>A production-minded pipeline that turns high-volume taxi data into fresh, validated, analytics-ready insights. ↗</p>
+          </a>
+          <a class="project" href="https://github.com/NandiGowda003/Data_LakeHouse_DataBricks_Spark" target="_blank" rel="noreferrer" aria-label="Open Data Lakehouse with Databricks and Spark repository on GitHub">
+            <p class="project-type">Lakehouse · Spark · SQL</p>
+            <h3>Lakehouse Forge</h3>
+            <p>A modern Databricks and Spark foundation for shaping raw data into scalable, modeled business assets. ↗</p>
+          </a>
+          <a class="project" href="https://github.com/NandiGowda003/Data-Warehouse-Project_SQL" target="_blank" rel="noreferrer" aria-label="Open Data Warehouse SQL Project repository on GitHub">
+            <p class="project-type">SQL · Data Warehousing · ETL</p>
+            <h3>Warehouse Blueprint</h3>
+            <p>A practical SQL warehouse blueprint for clean modeling, dependable transformations, and analytical decision-making. ↗</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="experience" id="experience" aria-labelledby="experience-title">
+        <div class="wrap experience-grid">
+          <div>
+            <p class="section-label">Experience</p>
+            <h2 id="experience-title">Practical experience, business context.</h2>
+          </div>
+          <div class="roles">
+            <article class="role">
+              <p>Data Engineering</p>
+              <div><h3>Freelance Data Engineer & Analyst</h3><p>5+ years of freelance and project-based work building cloud data engineering and analytics solutions.</p></div>
+            </article>
+            <article class="role">
+              <p>Business Analytics</p>
+              <div><h3>Business Analyst · BYJU’S</h3><p>Experience translating operational and business needs into clear, data-informed analysis.</p></div>
+            </article>
+            <article class="role">
+              <p>Operations</p>
+              <div><h3>Operational Analyst · Bounce</h3><p>Operational analysis experience supporting efficient, day-to-day business decisions.</p></div>
+            </article>
+            <article class="role">
+              <p>Systems</p>
+              <div><h3>System Operator · Justdial</h3><p>Early systems and operational experience, grounding a practical approach to technology and data.</p></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact wrap" id="contact" aria-labelledby="contact-title">
+        <div class="contact-card">
+          <div>
+            <p class="section-label">Have an idea?</p>
+            <h2 id="contact-title">Let’s build a data solution your business can trust.</h2>
+          </div>
+          <a class="button" href="mailto:nandigowda.96@gmail.com">Say hello ↗</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="wrap">
+      <div class="footer-row">
+        <span>© <span id="year"></span> Nandeesha C G</span>
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/nandeesha-cg-23370112b/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://github.com/NandiGowda003" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="mailto:nandigowda.96@gmail.com">Email</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
