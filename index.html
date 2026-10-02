@@ -195,15 +195,32 @@
 
       .contact { padding-bottom: 110px; }
       .contact-card {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 32px;
+        display: grid;
+        align-items: start;
+        grid-template-columns: 1fr minmax(300px, 0.82fr);
+        gap: clamp(32px, 6vw, 78px);
         padding: clamp(32px, 7vw, 74px);
         border-radius: 28px;
         background: #e5f4e9;
       }
       .contact-card h2 { max-width: 640px; margin-bottom: 0; }
+      .contact-form { display: grid; gap: 14px; }
+      .contact-form label { display: grid; gap: 6px; color: var(--ink); font-size: 0.86rem; font-weight: 800; }
+      .contact-form input, .contact-form textarea {
+        width: 100%;
+        border: 1px solid #b7d7bf;
+        border-radius: 10px;
+        padding: 12px 13px;
+        color: var(--ink);
+        background: rgba(255, 255, 255, 0.8);
+        font: inherit;
+      }
+      .contact-form textarea { min-height: 116px; resize: vertical; }
+      .contact-form input:focus, .contact-form textarea:focus { outline: 3px solid #b9a8ff; border-color: var(--purple); }
+      .contact-form .button { justify-self: start; border: 0; cursor: pointer; }
+      .form-note, .form-success { margin: 0; color: var(--muted); font-size: 0.82rem; }
+      .form-success { color: #28643e; font-weight: 800; }
+      .honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
       footer { padding: 0 0 34px; color: var(--muted); font-size: 0.88rem; }
       .footer-row { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); padding-top: 24px; }
       .socials { display: flex; gap: 18px; }
@@ -219,7 +236,8 @@
         .project-grid { grid-template-columns: 1fr; }
         .project { min-height: 290px; }
         .role { grid-template-columns: 1fr; gap: 7px; }
-        .contact-card, .footer-row { align-items: flex-start; flex-direction: column; }
+        .contact-card { grid-template-columns: 1fr; }
+        .footer-row { align-items: flex-start; flex-direction: column; }
       }
     </style>
   </head>
@@ -244,7 +262,7 @@
           <p class="hero-copy">Hi, I’m Nandeesha C G. I build scalable Azure data pipelines, lakehouse platforms, and analytics solutions that make data useful for people and businesses.</p>
           <div class="actions">
             <a class="button" href="#work">Explore my work ↓</a>
-            <a class="button secondary" href="mailto:nandigowda.96@gmail.com">Let’s talk ↗</a>
+            <a class="button secondary" href="#contact-form">Let’s talk ↓</a>
           </div>
         </div>
         <div class="portrait" aria-label="Decorative monogram for Nandeesha C G">
@@ -334,7 +352,27 @@
             <p class="section-label">Have an idea?</p>
             <h2 id="contact-title">Let’s build a data solution your business can trust.</h2>
           </div>
-          <a class="button" href="mailto:nandigowda.96@gmail.com">Say hello ↗</a>
+          <form class="contact-form" id="contact-form" action="https://formsubmit.co/nandigowda.96@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New portfolio enquiry for Nandeesha C G" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_next" value="https://nandigowda003.github.io/?sent=true#contact" />
+            <input class="honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <label>
+              Your name
+              <input type="text" name="name" autocomplete="name" required />
+            </label>
+            <label>
+              Your email
+              <input type="email" name="email" autocomplete="email" required />
+            </label>
+            <label>
+              How can I help?
+              <textarea name="message" required></textarea>
+            </label>
+            <button class="button" type="submit">Send message ↗</button>
+            <p class="form-note">Your message will be sent directly to Nandeesha’s inbox.</p>
+            <p class="form-success" id="form-success" hidden>Thanks — your message has been sent.</p>
+          </form>
         </div>
       </section>
     </main>
@@ -352,6 +390,9 @@
 
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
+      if (new URLSearchParams(window.location.search).get("sent") === "true") {
+        document.getElementById("form-success").hidden = false;
+      }
     </script>
   </body>
 </html>
